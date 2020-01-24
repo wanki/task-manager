@@ -39,18 +39,8 @@ class GetTaskIntegrationSpec extends BaseIntegrationSpec implements UserAuthoriz
 
     }
 
+    @PendingFeature
     def 'Should return all task in paginated model when received GET request'() {
-        given: 'There is existing task'
-            TaskDto taskDto = taskFacade.addTask(aTask())
-
-        expect: 'task is returned when request with existing id is received'
-            mockMvc.perform(authorized(GET, """/task/$taskDto.id"""))
-                   .andExpect(status().isOk())
-                   .andExpect(content().json("""{
-                                           "id": $taskDto.id,
-                                           "title" : "$taskDto.title",
-                                           "description" : "$taskDto.description"
-                                      }"""))
 
     }
 
